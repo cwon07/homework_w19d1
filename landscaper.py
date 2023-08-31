@@ -181,5 +181,58 @@ def use_battery_powered_lawnmower():
         else:
             print("Invalid input. Please choose a valid option.")
 
+def hire_team_starving_students():
+    while(True):
+        user_input = int(input("""
+                        Would you like to hire the team of starving students for $500?
+                        [1] Yes
+                        [2] No, I'll stick to my fancy battery powered lawnmower
+                        [3] Quit the Game
+                        """))
+        if(user_input == 1):
+            game_data['money'] -= 500
+            print(f"You hired a team of starving students for $500. You now have ${game_data['money']}.")
+            use_team_starving_students()
+        
+        elif(user_input == 2):
+            game_data['money'] += 100
+            print(f"You earned $100 mowing the lawn using your battery powered lawnmower. You now have ${game_data['money']}.")
+            use_battery_powered_lawnmower()
+        
+        elif(user_input == 3):
+            game_data['quit'] = True
+            print("You quit the game")
+        
+        else:
+            print("Invalid input. Please choose a valid option.")
+
+def use_team_starving_students():
+    while(True):
+        user_input = int(input("""
+                        Would you like the team of starving students to mow the lawn for you and earn $250?
+                        [1] Yes
+                        [2] No, I'll stick to my fancy battery powered lawnmower
+                        [3] Quit the Game
+                        """))
+        if(user_input == 1):
+            game_data['money'] += 250
+            print(f"Your team of starving students mowed the lawn and earned $250. You now have ${game_data['money']}.")
+            if game_data['money'] >= 1000:
+                print("Congratulations! You've won the game.")
+                break
+        
+        elif(user_input == 2):
+            game_data['money'] += 100
+            print(f"You earned $100 mowing the lawn using your battery powered lawnmower. You now have ${game_data['money']}.")
+            use_battery_powered_lawnmower()
+        
+        elif(user_input == 3):
+            game_data['quit'] = True
+            print("You quit the game")
+            break
+        
+        else:
+            print("Invalid input. Please choose a valid option.")
+
 
 use_teeth()
